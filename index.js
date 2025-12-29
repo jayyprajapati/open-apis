@@ -2,7 +2,6 @@ const connectToMongo = require("./db");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require('body-parser');
-const ScheduledJobs = require('./services/scheduledJobs');
 require("dotenv").config();
 
 connectToMongo();
@@ -26,10 +25,6 @@ app.use("/api/notifications", require("./Routes/notifications"));
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-  
-  // Initialize and start scheduled jobs
-  const jobService = new ScheduledJobs();
-  jobService.startScheduledJobs();
-  
+
   console.log('Portfolio notification system is ready!');
 });

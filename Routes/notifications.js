@@ -114,38 +114,4 @@ router.post('/test-email', async (req, res) => {
     }
 });
 
-// Manual trigger for notification job
-router.post('/trigger-job', async (req, res) => {
-    try {
-        const ScheduledJobs = require('../services/scheduledJobs');
-        const jobService = new ScheduledJobs();
-        
-        // Run the job manually
-        await jobService.triggerManually();
-        
-        res.status(200).json({ 
-            success: true, 
-            message: 'Notification job triggered manually' 
-        });
-    } catch (error) {
-        res.status(500).json({ success: false, error: error.message });
-    }
-});
-
-// Get job status and next run times
-router.get('/job-status', (req, res) => {
-    try {
-        const ScheduledJobs = require('../services/scheduledJobs');
-        const jobService = new ScheduledJobs();
-        const status = jobService.getJobStatus();
-        
-        res.status(200).json({ 
-            success: true, 
-            status 
-        });
-    } catch (error) {
-        res.status(500).json({ success: false, error: error.message });
-    }
-});
-
 module.exports = router;
