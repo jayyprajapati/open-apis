@@ -26,7 +26,7 @@ class EmailService {
             const subject = primary.email ? `New portfolio message from ${primary.email}` : 'New portfolio message received';
 
             const htmlMessages = formattedMessages.map((item, idx) => `
-                <section style="margin:0 0 ${idx === formattedMessages.length - 1 ? '0' : '18px'} 0;">
+                <section style="margin:0 0 ${idx === formattedMessages.length - 1 ? '0' : '18px'} 0; padding: 1rem">
                     <div style="font-size:14px;color:#444;">From</div>
                     <div style="font-size:16px;color:#111;font-weight:600;margin:4px 0 10px 0;">${item.email}</div>
                     <div style="font-size:14px;color:#444;">Message</div>
