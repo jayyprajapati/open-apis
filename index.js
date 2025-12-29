@@ -17,14 +17,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (_, res) => {
-  res.send("Hello! This is just a home route. The endpoints available are:\n /api/connect\n /api/notifications");
+  res.send("Hello! This is just a home route. The endpoint available is:\n /api/connect");
 });
 
 app.use("/api/connect", require("./Routes/messages"));
-app.use("/api/notifications", require("./Routes/notifications"));
+// /api/notifications route removed (previous admin helpers no longer used)
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-
-  console.log('Portfolio notification system is ready!');
 });
